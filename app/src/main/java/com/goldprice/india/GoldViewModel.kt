@@ -49,11 +49,7 @@ class GoldViewModel : ViewModel() {
             val result = GoldRepository.fetchGoldPrices(_selectedCity.value.slug)
             result.fold(
                 onSuccess = { data ->
-                    if (data.prices.isEmpty()) {
-                        _uiState.value = GoldUiState.Error("No price data found. Please try again.")
-                    } else {
-                        _uiState.value = GoldUiState.Success(data)
-                    }
+                    _uiState.value = GoldUiState.Success(data)
                 },
                 onFailure = { e ->
                     _uiState.value = GoldUiState.Error(e.message ?: "Failed to fetch prices")

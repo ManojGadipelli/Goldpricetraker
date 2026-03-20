@@ -365,6 +365,7 @@ fun SuccessSection(
     priceUnit: PriceUnit,
     computePrice: (Long, Boolean, PriceUnit) -> Long
 ) {
+    val usdInrStr = "USD/INR: ₹${"%.2f".format(data.usdInr)}"
     val timeStr = remember(data.fetchedAt) {
         SimpleDateFormat("hh:mm a, dd MMM yyyy", Locale.getDefault()).format(Date(data.fetchedAt))
     }
